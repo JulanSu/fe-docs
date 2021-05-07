@@ -64,3 +64,41 @@ var twoSum = function(nums, target) {
     }
     return res
 };
+
+
+/**
+ * 合并两个有序数组
+ * https://leetcode-cn.com/problems/merge-sorted-array/
+ * 使用双指针
+ */
+
+/**
+ * @param {number[]} nums1
+ * @param {number} m
+ * @param {number[]} nums2
+ * @param {number} n
+ * @return {void} Do not return anything, modify nums1 in-place instead.
+ */
+ var merge = function(nums1, m, nums2, n) {
+    let k = m - 1,
+        j = n - 1,
+        l = m + n -1;
+
+    while(k >= 0 && j>= 0) {
+        if(nums1[k] > nums2[j]) {
+            nums1[l] = nums1[k]
+            l --
+            k --
+        }else {
+            nums1[l] = nums2[j]
+            l --
+            j --
+        }
+    }
+
+    while(j >= 0) {
+        nums1[l] = nums2[j]
+        l --
+        j --
+    }
+};
